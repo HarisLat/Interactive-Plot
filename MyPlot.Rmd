@@ -1,0 +1,26 @@
+---
+title: "Interactive plot of air quality"
+author: "Charilaos Latinopoulos"
+date: "7/6/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 07/06/2018
+
+```{r include=FALSE,comment="",echo=FALSE,eval=TRUE,message=FALSE}
+library(plotly)
+library(bindrcpp)
+x<-complete.cases(airquality)
+aq<-airquality[x,]
+```
+
+
+```{r comment="",echo=FALSE,eval=TRUE,message=FALSE}
+plot_ly(data=aq,x=~Wind,y=~Ozone,color=~Temp,
+        text=~paste("Solar Radiation: ",Solar.R))
+```
+
